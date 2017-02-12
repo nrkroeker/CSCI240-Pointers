@@ -1,0 +1,15 @@
+// Honor Pledge: I pledge that I have neither given nor received any help on this assignment
+
+Nathalie Kroeker
+CSCI 24000
+Assignment 2 Algorithm
+
+First, need to determine the movement of racer A:
+  1. Choose a random integer 0-9
+  2. Using an array of the possible movements, find the result at the position of that random integer
+  3. Add to the position of racer A the new move
+  4. Check if the new space is before the starting line, in which case their position will be replaced by the starting line
+
+Then, repeat the process for racer B. In addition, check if the new 2 positions are equal. If so, racer A's position loses one.
+
+To print, it will determine which racer is behind. The position of that racer - 1 is the number of spaces it will print first. Then it prints the letter of the first racer. Then, it will calculate the difference between racer A and B, and print that number of spaces. Then it will print the next racer's letter. Then, it will do 50 - initial spaces - difference spaces - 2 and print that number of spaces
