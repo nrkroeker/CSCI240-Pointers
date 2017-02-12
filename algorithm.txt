@@ -12,4 +12,4 @@ First, need to determine the movement of racer A:
 
 Then, repeat the process for racer B. In addition, check if the new 2 positions are equal. If so, racer A's position loses one.
 
-To print, it will determine which racer is behind. The position of that racer - 1 is the number of spaces it will print first. Then it prints the letter of the first racer. Then, it will calculate the difference between racer A and B, and print that number of spaces. Then it will print the next racer's letter. Then, it will do 50 - initial spaces - difference spaces - 2 and print that number of spaces
+To print, it will determine which racer is behind. The position of that racer - 1 is the number of spaces it will print first. Then it prints the letter of the first racer. Then, it will calculate the difference between racer A and B, and print that number of spaces. Then it will print the next racer's letter. Then, it will do RACE_LENGTH - the second racer's position, and print that number of spaces

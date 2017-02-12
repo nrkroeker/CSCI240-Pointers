@@ -4,32 +4,29 @@
 #include <stdlib.h>
 #include <ctime>
 
-#define RACE_LENGTH 50
+#define RACE_LENGTH 25
 
 void advanceRacerA(int* ptrRacerA) {
-	random_integer = rand()%10;
-};
-void advanceRacerB(int* ptrRacerB);
-void printPosition(int* ptrRacerA, int* ptrRacerB);
 
-int main()
-{
-	int posA;
-  int posB;
-  int raceLength;
-  int spacesBefore;
+}
+
+void advanceRacerB(int* ptrRacerB) {
+
+}
+void printPosition(int* ptrRacerA, int* ptrRacerB) {
+	int spacesBefore;
   int spacesBetween;
   int spacesAfter;
 
-  if (posB > posA) {
-    spacesBefore = posA - 1;
-    spacesBetween = posB - posA - 1;
-    spacesAfter = raceLength - posB;
+	if (*ptrRacerB > *ptrRacerA) {
+    spacesBefore = *ptrRacerA - 1;
+    spacesBetween = *ptrRacerB - *ptrRacerA - 1;
+    spacesAfter = RACE_LENGTH - *ptrRacerB;
   }
 	else {
-		spacesBefore = posB - 1;
-    spacesBetween = posA - posB - 1;
-    spacesAfter = raceLength - posA;
+		spacesBefore = *ptrRacerB - 1;
+    spacesBetween = *ptrRacerA - *ptrRacerB - 1;
+    spacesAfter = RACE_LENGTH - *ptrRacerA;
 	}
 
   for (int a = 0; a < spacesBefore; a++) {
@@ -49,6 +46,20 @@ int main()
   }
 
   std::cout << "|";
+
+};
+
+int main()
+{
+	int* ptrRacerA;
+	int* ptrRacerB;
+	*ptrRacerA = 5;
+	*ptrRacerB = 8;
+
+	// advanceRacerA(ptrRacerA);
+	// advanceRacerB(ptrRacerB);
+
+	printPosition(ptrRacerA, ptrRacerB);
 
   return 0;
 }
