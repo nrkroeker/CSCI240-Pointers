@@ -6,13 +6,16 @@
 
 #define RACE_LENGTH 50
 
+// Declare functions
 void advanceRacerA(int* ptrRacerA);
 void advanceRacerB(int* ptrRacerB);
 void printPosition(int* ptrRacerA, int* ptrRacerB);
 
+// Determines the position of racer A
 void advanceRacerA(int* ptrRacerA) {
 	int randint;
 
+// Using the movement chances, check which movement the player should get
 	randint = rand()%10 + 1;
 	if (randint > 0 && randint <= 3) {
 		*ptrRacerA = *ptrRacerA + 4;
@@ -30,6 +33,7 @@ void advanceRacerA(int* ptrRacerA) {
 		*ptrRacerA = *ptrRacerA - 4;
 	}
 
+	// Check if racer is on start or finish line
 	if (*ptrRacerA < 0) {
 		*ptrRacerA = 0;
 	}
@@ -39,9 +43,11 @@ void advanceRacerA(int* ptrRacerA) {
 	}
 }
 
+// Determines the position of racer B
 void advanceRacerB(int* ptrRacerB) {
 	int randint;
 
+	// Using the movement chances, check which movement the player should get
 	randint = rand()%11;
 	if (randint > 0 && randint <= 4) {
 		*ptrRacerB = *ptrRacerB + 5;
@@ -59,6 +65,7 @@ void advanceRacerB(int* ptrRacerB) {
 		*ptrRacerB = *ptrRacerB - 4;
 	}
 
+	// Check if racer is on start or finish line
 	if (*ptrRacerB < 0) {
 		*ptrRacerB = 0;
 	}
@@ -68,21 +75,27 @@ void advanceRacerB(int* ptrRacerB) {
 	}
 }
 
+// Print to the console the racer and the spaces before and after
 void printPosition(int* ptrRacerA, int* ptrRacerB) {
+	// Create the array for this line
 	char printRace[RACE_LENGTH];
 	for (int a = 0; a < RACE_LENGTH; a++) {
 		printRace[a] = ' ';
 	}
+	// Set the values
 	printRace[49] = '|';
 	printRace[*ptrRacerA] = 'A';
 	printRace[*ptrRacerB] = 'B';
 
+	// Print them to the console
 	for (int a = 0; a < RACE_LENGTH; a++) {
 		std::cout << printRace[a];
 	}
 };
 
+// Run all the things
 int main() {
+	// Declare variables, initialize stuff
 	srand (time(NULL));
 	int *ptrRacerA;
 	int *ptrRacerB;
@@ -93,9 +106,11 @@ int main() {
 	*ptrRacerA = a;
 	*ptrRacerB = b;
 
+	// Beginning of the race stuff
 	std::cout << "Welcome to the Spartan Race!!" << std::endl;
 	std::cout << "3...2...1.....GO!" << std::endl;
 	std::cout << "___________________________________________________" << std::endl;
+	// Runs for each line of the race
 	while(*ptrRacerA < 49 && *ptrRacerB < 49) {
 		std::cout << "|";
 		advanceRacerA(ptrRacerA);
@@ -105,6 +120,7 @@ int main() {
 	}
 	std::cout << "|_________________________________________________|" << std::endl;
 
+	// Announce the winner
 	if (*ptrRacerA > *ptrRacerB) {
 		std::cout << "You won! Nice work, underdog!" << std::endl;
 	}
