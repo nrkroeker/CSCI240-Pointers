@@ -34,8 +34,8 @@ void advanceRacerA(int* ptrRacerA) {
 		*ptrRacerA = 0;
 	}
 
-	if (*ptrRacerA > 50) {
-		*ptrRacerA = 50;
+	if (*ptrRacerA > 49) {
+		*ptrRacerA = 49;
 	}
 }
 
@@ -63,59 +63,73 @@ void advanceRacerB(int* ptrRacerB) {
 		*ptrRacerB = 0;
 	}
 
-	if (*ptrRacerB > 50) {
-		*ptrRacerB = 50;
+	if (*ptrRacerB > 49) {
+		*ptrRacerB = 49;
 	}
 }
 
 void printPosition(int* ptrRacerA, int* ptrRacerB) {
-	int spacesBefore;
-  int spacesBetween;
-  int spacesAfter;
-	char leadRacer;
-	char secondRacer;
+	char printRace[RACE_LENGTH];
+	for (int a = 0; a < RACE_LENGTH; a++) {
+		printRace[a] = '.';
+	}
+	printRace[49] = '|';
+	printRace[*ptrRacerA] = 'A';
+	printRace[*ptrRacerB] = 'B';
 
-	if (*ptrRacerA == *ptrRacerB) {
-		*ptrRacerA = *ptrRacerA - 1;
+	for (int a = 0; a < RACE_LENGTH; a++) {
+		std::cout << printRace[a];
 	}
 
-	if (*ptrRacerA > *ptrRacerB) {
-		spacesBefore = *ptrRacerB - 1;
-    spacesBetween = *ptrRacerA - *ptrRacerB - 1;
-    spacesAfter = RACE_LENGTH - *ptrRacerA;
-		leadRacer = 'B';
-		secondRacer = 'A';
-  }
-	else {
-		spacesBefore = *ptrRacerA - 1;
-		spacesBetween = *ptrRacerB - *ptrRacerA - 1;
-		spacesAfter = RACE_LENGTH - *ptrRacerB;
-		leadRacer = 'A';
-		secondRacer = 'B';
-	}
-	if (spacesBefore != 0) {
-	  for (int a = 0; a <= spacesBefore; a++) {
-    std::cout << ".";
-  	}
-	}
+	std::cout << "\n";
 
-  std::cout << leadRacer;
-
-	if (*ptrRacerB - *ptrRacerA != 1 && *ptrRacerA - *ptrRacerB != 1) {
-	  for (int a = 0; a <= spacesBetween; a++) {
-	    std::cout << ".";
-	  }
-	}
-
-  std::cout << secondRacer;
-
-	if (spacesAfter != 0) {
-		for (int a = 0; a <= spacesAfter; a++) {
-    std::cout << ".";
-  	}
-	}
-
-  std::cout << "|" << std::endl;
+	// int spacesBefore;
+  // int spacesBetween;
+  // int spacesAfter;
+	// char leadRacer;
+	// char secondRacer;
+	//
+	// if (*ptrRacerA == *ptrRacerB) {
+	// 	*ptrRacerA = *ptrRacerA - 1;
+	// }
+	//
+	// if (*ptrRacerA > *ptrRacerB) {
+	// 	spacesBefore = *ptrRacerB - 1;
+  //   spacesBetween = *ptrRacerA - *ptrRacerB - 1;
+  //   spacesAfter = RACE_LENGTH - *ptrRacerA;
+	// 	leadRacer = 'B';
+	// 	secondRacer = 'A';
+  // }
+	// else {
+	// 	spacesBefore = *ptrRacerA - 1;
+	// 	spacesBetween = *ptrRacerB - *ptrRacerA - 1;
+	// 	spacesAfter = RACE_LENGTH - *ptrRacerB;
+	// 	leadRacer = 'A';
+	// 	secondRacer = 'B';
+	// }
+	// if (spacesBefore != 0) {
+	//   for (int a = 0; a <= spacesBefore; a++) {
+  //   std::cout << ".";
+  // 	}
+	// }
+	//
+  // std::cout << leadRacer;
+	//
+	// if (*ptrRacerB - *ptrRacerA != 1 && *ptrRacerA - *ptrRacerB != 1) {
+	//   for (int a = 0; a <= spacesBetween; a++) {
+	//     std::cout << ".";
+	//   }
+	// }
+	//
+  // std::cout << secondRacer;
+	//
+	// if (spacesAfter != 0) {
+	// 	for (int a = 0; a <= spacesAfter; a++) {
+  //   std::cout << ".";
+  // 	}
+	// }
+	//
+  // std::cout << "|" << std::endl;
 };
 
 int main() {
@@ -131,7 +145,7 @@ int main() {
 
 	std::cout << "Welcome to the Spartan Race!!" << std::endl;
 	std::cout << "3...2...1.....GO!" << std::endl;
-	while(*ptrRacerA < 50 && *ptrRacerB < 50) {
+	while(*ptrRacerA < 49 && *ptrRacerB < 49) {
 	std::cout << "|";
 	advanceRacerA(ptrRacerA);
 	advanceRacerB(ptrRacerB);
