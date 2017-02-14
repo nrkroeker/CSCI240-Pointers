@@ -21,8 +21,13 @@ void advanceRacerA(int* ptrRacerA) {
 	movementsA[8] = -3;
 	movementsA[9] = -4;
 	randint = rand()%10;
-	movePosA = movementsA[randint];
-	*ptrRacerA = *ptrRacerA + movePosA;
+	if (randint < 3) {
+		*ptrRacerA = *ptrRacerA + 4;
+	}
+	if (randint > 3 && randint < 4) {
+		*ptrRacerA = *ptrRacerA + 4;
+	}
+
 
 	if (*ptrRacerA < 0) {
 		*ptrRacerA = 0;
@@ -104,7 +109,7 @@ int main() {
 	*ptrRacerB = b;
 
 	std::cout << "Welcome to the Spartan Race!!" << std::endl;
-	std::cout << "Let the games begin....." << std::endl;
+	std::cout << "3...2...1.....GO!" << std::endl;
 	while(*ptrRacerA < 50 && *ptrRacerB < 50) {
 	std::cout << "|";
 	advanceRacerA(ptrRacerA);
