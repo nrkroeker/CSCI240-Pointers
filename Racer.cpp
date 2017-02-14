@@ -71,7 +71,7 @@ void advanceRacerB(int* ptrRacerB) {
 void printPosition(int* ptrRacerA, int* ptrRacerB) {
 	char printRace[RACE_LENGTH];
 	for (int a = 0; a < RACE_LENGTH; a++) {
-		printRace[a] = '.';
+		printRace[a] = ' ';
 	}
 	printRace[49] = '|';
 	printRace[*ptrRacerA] = 'A';
@@ -80,56 +80,6 @@ void printPosition(int* ptrRacerA, int* ptrRacerB) {
 	for (int a = 0; a < RACE_LENGTH; a++) {
 		std::cout << printRace[a];
 	}
-
-	std::cout << "\n";
-
-	// int spacesBefore;
-  // int spacesBetween;
-  // int spacesAfter;
-	// char leadRacer;
-	// char secondRacer;
-	//
-	// if (*ptrRacerA == *ptrRacerB) {
-	// 	*ptrRacerA = *ptrRacerA - 1;
-	// }
-	//
-	// if (*ptrRacerA > *ptrRacerB) {
-	// 	spacesBefore = *ptrRacerB - 1;
-  //   spacesBetween = *ptrRacerA - *ptrRacerB - 1;
-  //   spacesAfter = RACE_LENGTH - *ptrRacerA;
-	// 	leadRacer = 'B';
-	// 	secondRacer = 'A';
-  // }
-	// else {
-	// 	spacesBefore = *ptrRacerA - 1;
-	// 	spacesBetween = *ptrRacerB - *ptrRacerA - 1;
-	// 	spacesAfter = RACE_LENGTH - *ptrRacerB;
-	// 	leadRacer = 'A';
-	// 	secondRacer = 'B';
-	// }
-	// if (spacesBefore != 0) {
-	//   for (int a = 0; a <= spacesBefore; a++) {
-  //   std::cout << ".";
-  // 	}
-	// }
-	//
-  // std::cout << leadRacer;
-	//
-	// if (*ptrRacerB - *ptrRacerA != 1 && *ptrRacerA - *ptrRacerB != 1) {
-	//   for (int a = 0; a <= spacesBetween; a++) {
-	//     std::cout << ".";
-	//   }
-	// }
-	//
-  // std::cout << secondRacer;
-	//
-	// if (spacesAfter != 0) {
-	// 	for (int a = 0; a <= spacesAfter; a++) {
-  //   std::cout << ".";
-  // 	}
-	// }
-	//
-  // std::cout << "|" << std::endl;
 };
 
 int main() {
@@ -145,12 +95,15 @@ int main() {
 
 	std::cout << "Welcome to the Spartan Race!!" << std::endl;
 	std::cout << "3...2...1.....GO!" << std::endl;
+	std::cout << "___________________________________________________" << std::endl;
 	while(*ptrRacerA < 49 && *ptrRacerB < 49) {
-	std::cout << "|";
-	advanceRacerA(ptrRacerA);
-	advanceRacerB(ptrRacerB);
-	printPosition(ptrRacerA, ptrRacerB);
+		std::cout << "|";
+		advanceRacerA(ptrRacerA);
+		advanceRacerB(ptrRacerB);
+		printPosition(ptrRacerA, ptrRacerB);
+		std::cout << "\n";
 	}
+	std::cout << "|_________________________________________________|" << std::endl;
 
 	if (*ptrRacerA > *ptrRacerB) {
 		std::cout << "You won! Nice work, underdog!" << std::endl;
