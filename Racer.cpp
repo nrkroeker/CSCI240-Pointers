@@ -6,54 +6,65 @@
 
 #define RACE_LENGTH 50
 
+void advanceRacerA(int* ptrRacerA);
+void advanceRacerB(int* ptrRacerB);
+void printPosition(int* ptrRacerA, int* ptrRacerB);
+
 void advanceRacerA(int* ptrRacerA) {
 	int randint;
-	int movePosA;
-	int movementsA[10];
-	movementsA[0] = 4;
-	movementsA[1] = 4;
-	movementsA[2] = 4;
-	movementsA[3] = 5;
-	movementsA[4] = -2;
-	movementsA[5] = -2;
-	movementsA[6] = -2;
-	movementsA[7] = -3;
-	movementsA[8] = -3;
-	movementsA[9] = -4;
-	randint = rand()%10;
-	if (randint < 3) {
-		*ptrRacerA = *ptrRacerA + 4;
-	}
-	if (randint > 3 && randint < 4) {
-		*ptrRacerA = *ptrRacerA + 4;
-	}
 
+	randint = rand()%10 + 1;
+	if (randint > 0 && randint <= 3) {
+		*ptrRacerA = *ptrRacerA + 4;
+	}
+	else if (randint > 3 && randint <= 4) {
+		*ptrRacerA = *ptrRacerA + 5;
+	}
+	else if (randint > 4 && randint <= 7) {
+		*ptrRacerA = *ptrRacerA - 2;
+	}
+	else if (randint > 7 && randint <= 9) {
+		*ptrRacerA = *ptrRacerA - 3;
+	}
+	else if (randint = 10) {
+		*ptrRacerA = *ptrRacerA - 4;
+	}
 
 	if (*ptrRacerA < 0) {
 		*ptrRacerA = 0;
+	}
+
+	if (*ptrRacerA > 50) {
+		*ptrRacerA = 50;
 	}
 }
 
 void advanceRacerB(int* ptrRacerB) {
 	int randint;
-	int movePosB;
-	int movementsB[10];
-	movementsB[0] = 5;
-	movementsB[1] = 5;
-	movementsB[2] = 5;
-	movementsB[3] = 5;
-	movementsB[4] = 6;
-	movementsB[5] = -1;
-	movementsB[6] = -1;
-	movementsB[7] = -2;
-	movementsB[8] = -2;
-	movementsB[9] = -4;
-	randint = rand()%10;
-	movePosB = movementsB[randint];
-	*ptrRacerB = *ptrRacerB + movePosB;
+
+	randint = rand()%11;
+	if (randint > 0 && randint <= 4) {
+		*ptrRacerB = *ptrRacerB + 5;
+	}
+	else if (randint > 4 && randint <= 5) {
+		*ptrRacerB = *ptrRacerB + 6;
+	}
+	else if (randint > 5 && randint <= 7) {
+		*ptrRacerB = *ptrRacerB - 1;
+	}
+	else if (randint > 7 && randint <= 9) {
+		*ptrRacerB = *ptrRacerB - 2;
+	}
+	else if (randint = 10) {
+		*ptrRacerB = *ptrRacerB - 4;
+	}
 
 	if (*ptrRacerB < 0) {
 		*ptrRacerB = 0;
+	}
+
+	if (*ptrRacerB > 50) {
+		*ptrRacerB = 50;
 	}
 }
 
@@ -61,40 +72,50 @@ void printPosition(int* ptrRacerA, int* ptrRacerB) {
 	int spacesBefore;
   int spacesBetween;
   int spacesAfter;
+	char leadRacer;
+	char secondRacer;
 
 	if (*ptrRacerA == *ptrRacerB) {
 		*ptrRacerA = *ptrRacerA - 1;
 	}
 
-	if (*ptrRacerB > *ptrRacerA) {
-    spacesBefore = *ptrRacerA - 1;
-    spacesBetween = *ptrRacerB - *ptrRacerA - 1;
-    spacesAfter = RACE_LENGTH - *ptrRacerB;
-  }
-	else {
+	if (*ptrRacerA > *ptrRacerB) {
 		spacesBefore = *ptrRacerB - 1;
     spacesBetween = *ptrRacerA - *ptrRacerB - 1;
     spacesAfter = RACE_LENGTH - *ptrRacerA;
+		leadRacer = 'B';
+		secondRacer = 'A';
+  }
+	else {
+		spacesBefore = *ptrRacerA - 1;
+		spacesBetween = *ptrRacerB - *ptrRacerA - 1;
+		spacesAfter = RACE_LENGTH - *ptrRacerB;
+		leadRacer = 'A';
+		secondRacer = 'B';
+	}
+	if (spacesBefore != 0) {
+	  for (int a = 0; a <= spacesBefore; a++) {
+    std::cout << ".";
+  	}
 	}
 
-  for (int a = 0; a <= spacesBefore; a++) {
+  std::cout << leadRacer;
+
+	if (*ptrRacerB - *ptrRacerA != 1 && *ptrRacerA - *ptrRacerB != 1) {
+	  for (int a = 0; a <= spacesBetween; a++) {
+	    std::cout << ".";
+	  }
+	}
+
+  std::cout << secondRacer;
+
+	if (spacesAfter != 0) {
+		for (int a = 0; a <= spacesAfter; a++) {
     std::cout << ".";
-  }
-
-  std::cout << "A";
-
-  for (int a = 0; a <= spacesBetween; a++) {
-    std::cout << ".";
-  }
-
-  std::cout << "B";
-
-  for (int a = 0; a <= spacesAfter; a++) {
-    std::cout << ".";
-  }
+  	}
+	}
 
   std::cout << "|" << std::endl;
-
 };
 
 int main() {
@@ -118,7 +139,7 @@ int main() {
 	}
 
 	if (*ptrRacerA > *ptrRacerB) {
-		std::cout << "You won! Your friend might be mad ;)" << std::endl;
+		std::cout << "You won! Nice work, underdog!" << std::endl;
 	}
 	else {
 		std::cout << "Your friend won! Better luck next time." << std::endl;
