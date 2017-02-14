@@ -4,11 +4,12 @@ Nathalie Kroeker
 CSCI 24000
 Assignment 2 Algorithm
 
-First, need to determine the movement of racer A:
+First, I need to determine the movement of racer A:
   1. Choose a random integer 0-9
-  2. Using an array of the possible movements, find the result at the position of that random integer
-  3. Add to the position of racer A the new move
-  4. Check if the new space is before the starting line, in which case their position will be replaced by the starting line
+  2. Make the percentage likelihoods into a set of domains.
+  3. Check which domain it falls in, this will be the movement that the racer does.
+  4. Add that movement number to the racer's position.
+  5. If the position moves it back before the start line, it needs to be back on the start line. OR if the movement takes it past the finish line, it needs to be right on the finish line.
 
 Then, repeat the process for racer B. In addition, check if the new 2 positions are equal. If so, racer A's position loses one.
 
